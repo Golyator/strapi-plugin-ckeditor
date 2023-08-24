@@ -338,9 +338,18 @@ export default class Configurator {
   constructor ( fieldConfig ) {
     this.fieldConfig = fieldConfig;
   }
-
+  
   getEditorConfig() {
-    const config = this._getBaseConfig();
+    const customConfig = {
+      mediaEmbed: {
+        previewsInData: true
+      }
+    }
+    
+    const config = {
+      ...this._getBaseConfig(),
+      ...customConfig
+    };
 
     const maxLength = this.fieldConfig.maxLength;
     const outputOption = this.fieldConfig.options.output;
